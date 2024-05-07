@@ -28,6 +28,17 @@ a:hover {
   max-width: 800px;
 }
 
+#root > h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+@media print {
+  #root > h2 {
+    display: none;
+  }
+}
+
 body {
   margin: 2rem;
   display: flex;
