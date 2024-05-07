@@ -19,10 +19,6 @@ export default function BulletWrapper() {
         const newId = uuidv4()
         setBulletPrompts([...bulletPrompts, {
             input: <ParagraphInput key={newId} placeholder="write" />,
-            deleteButton: <Button key={newId} title="X" onClick={(e) => {
-                            e.preventDefault();
-                            handleDeletePrompt(newId);
-            }}/>,
             id: newId
         }])
     }
@@ -33,10 +29,13 @@ export default function BulletWrapper() {
         <>
             {bulletPrompts.map(prompt => {
                 return (
-                    <>
+                    <div key={prompt.id}>
                     {prompt.input}
-                    {prompt.deleteButton}
-                    </>
+                        <Button key={uuidv4()} title='X' onClick={(e) => {
+                            e.preventDefault();
+                            handleDeletePrompt(prompt.id);
+                    }}/>
+                    </div>
                 )
             })}
 

@@ -12,6 +12,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     {/* <ContactForm name='' email='' cell='' />
     <EduForm school='' degree='' gradDate='' additionalInfo='' />
     <WorkForm company='' position='' dateStart='' dateEnd='' details='' /> */}
-    <BulletWrapper />
+    <BulletWrapper key={123} />
   </React.StrictMode>,
 )
