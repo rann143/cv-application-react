@@ -1,5 +1,5 @@
 import Input from './Input'
-import { ContactDisplay, EduDisplay } from './Display';
+import { ContactDisplay, EduDisplay, WorkDisplay } from './Display';
 import Button from './Button';
 import '../styles/forms.css';
 import { useState } from 'react';
@@ -77,7 +77,9 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-
+        if (!eduInfo.mySchool && !eduInfo.myDegree && !eduInfo.myGradDate && !eduInfo.myAdditionalInfo) {
+            return alert('Please enter Education')
+        }
         setIsSent(true);
     }
 
@@ -99,7 +101,7 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
         <form className='edu-form' onSubmit={handleSubmit}>
             <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={eduInfo.mySchool} onTyping={handleSchoolTyping} />
             <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={eduInfo.myDegree} onTyping={handleDegreeTyping} />
-            <Input className='edu-input' label='Graduation Date' name='graduation date' placeholder='2017' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
+            <Input className='edu-input' label='Graduation Date' name='graduation-date' placeholder='2017' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
             <textarea placeholder='Additional Info (Optional)' value={eduInfo.myAdditionalInfo} onChange={handleAdditionalInfoTyping}></textarea>
             <Button className='form-submit' type='submit' title="Submit" />
         </form>
@@ -107,4 +109,62 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
 
 }
 
-export {ContactForm, EduForm}
+// eslint-disable-next-line react/prop-types
+function WorkForm({ company, position, dateStart, dateEnd, details }) {
+    const [isSent, setIsSent] = useState(false);
+    const [workInfo, setWorkInfo] = useState({ myCompany: company, myPosition: position, myDateStart: dateStart, myDateEnd: dateEnd, myDetails: details });
+
+    function handleCompanyTyping(e) {
+        setWorkInfo({...workInfo, myCompany: e.target.value})
+    }
+
+    function handlePositionTyping(e) {
+        setWorkInfo({...workInfo, myPosition: e.target.value})
+    }
+
+    function handleStartTyping(e) {
+        setWorkInfo({...workInfo, myDateStart: e.target.value})
+    }
+
+    function handleEndTyping(e) {
+        setWorkInfo({...workInfo, myDateEnd: e.target.value})
+    }
+    function handleDetailsTyping(e) {
+        setWorkInfo({...workInfo, myDetails: e.target.value})
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        setIsSent(true);
+    }
+
+    if (isSent) {
+
+        return (
+            <WorkDisplay
+                className='work-display'
+                company={workInfo.myCompany}
+                position={workInfo.myPosition}
+                dateStart={workInfo.myDateStart}
+                dateEnd={workInfo.myDateEnd}
+                details={workInfo.myDetails}
+            />
+        )
+    }
+
+    return (
+        <form className='work-form' onSubmit={handleSubmit}>
+            <Input className='work-input' label='Company' name='school' placeholder='Toast' type='text' text={workInfo.myCompany} onTyping={handleCompanyTyping} />
+            <Input className='work-input' label='Position' name='degree' placeholder='Account Executive' type='text' text={workInfo.myPosition} onTyping={handlePositionTyping} />
+            <Input className='work-input' label='Start Date' name='start-date' placeholder='June 2022' type='text' text={workInfo.myDateStart} onTyping={handleStartTyping} />
+            <Input className='work-input' label='End Date' name='end-date' placeholder='December 2023' type='text' text={workInfo.myDateEnd} onTyping={handleEndTyping} />
+            <textarea placeholder='Additional Info (Optional)' value={workInfo.myDetails} onChange={handleDetailsTyping}></textarea>
+            <Button className='form-submit' type='submit' title="Submit" />
+        </form>
+    )
+
+
+
+}
+
+export {ContactForm, EduForm, WorkForm}

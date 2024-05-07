@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ContactForm, EduForm } from "./Form";
+import { ContactForm, EduForm, WorkForm } from "./Form";
 import Button from "./Button";
 import { useState } from "react";
 import '../styles/display.css'
@@ -56,7 +56,8 @@ function EduDisplay({ className, school, degree, gradDate, additionalInfo }) {
 
     return (
         <div className={className}>
-            <h2>{school}</h2>
+            <h2>EDUCATION</h2>
+            <h3>{school}</h3>
             <span>{degree}</span>
             <time>{gradDate}</time>
             <div>{additionalInfo}</div>
@@ -66,4 +67,39 @@ function EduDisplay({ className, school, degree, gradDate, additionalInfo }) {
     
 }
 
-export {ContactDisplay, EduDisplay}
+// eslint-disable-next-line react/prop-types
+function WorkDisplay({ className, company, position, dateStart, dateEnd, details }) {
+    const [isEditing, setIsEditing] = useState(false)
+
+    function handleEdit(e) {
+        e.preventDefault();
+        setIsEditing(true);
+    }
+
+    if (isEditing) {
+        return (
+            <WorkForm
+                company={company}
+                position={position}
+                dateStart={dateStart}
+                dateEnd={dateEnd}
+                details={details}
+            />
+        )
+    }
+
+    return (
+        <div className={className}>
+            <h2>EXPERIENCE</h2>
+            <h3>{company}</h3>
+            <span>{position}</span>
+            <time>{dateStart}</time>
+            <time>{dateEnd}</time>
+            <div>{details}</div>
+            <Button className='edit-btn' title='Edit' type='button' onClick={handleEdit} />
+        </div>
+    )
+    
+}
+
+export {ContactDisplay, EduDisplay, WorkDisplay}
