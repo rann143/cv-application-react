@@ -2,7 +2,7 @@ form {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: start;
     margin: 3rem;
 }

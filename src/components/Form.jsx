@@ -101,7 +101,7 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
         <form className='edu-form' onSubmit={handleSubmit}>
             <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={eduInfo.mySchool} onTyping={handleSchoolTyping} />
             <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={eduInfo.myDegree} onTyping={handleDegreeTyping} />
-            <Input className='edu-input' label='Graduation Date' name='graduation-date' placeholder='2017' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
+            <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='2017' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
             <textarea placeholder='Additional Info (Optional)' value={eduInfo.myAdditionalInfo} onChange={handleAdditionalInfoTyping}></textarea>
             <Button className='form-submit' type='submit' title="Submit" />
         </form>
@@ -154,11 +154,11 @@ function WorkForm({ company, position, dateStart, dateEnd, details }) {
 
     return (
         <form className='work-form' onSubmit={handleSubmit}>
-            <Input className='work-input' label='Company' name='school' placeholder='Toast' type='text' text={workInfo.myCompany} onTyping={handleCompanyTyping} />
-            <Input className='work-input' label='Position' name='degree' placeholder='Account Executive' type='text' text={workInfo.myPosition} onTyping={handlePositionTyping} />
-            <Input className='work-input' label='Start Date' name='start-date' placeholder='June 2022' type='text' text={workInfo.myDateStart} onTyping={handleStartTyping} />
-            <Input className='work-input' label='End Date' name='end-date' placeholder='December 2023' type='text' text={workInfo.myDateEnd} onTyping={handleEndTyping} />
-            <textarea placeholder='Additional Info (Optional)' value={workInfo.myDetails} onChange={handleDetailsTyping}></textarea>
+            <Input className='work-input' label='Company' name='school' placeholder='Name' type='text' text={workInfo.myCompany} onTyping={handleCompanyTyping} />
+            <Input className='work-input' label='Position' name='degree' placeholder='Title' type='text' text={workInfo.myPosition} onTyping={handlePositionTyping} />
+            <Input className='work-input' label='Start Date' name='start-date' placeholder='Month Year' type='text' text={workInfo.myDateStart} onTyping={handleStartTyping} />
+            <Input className='work-input' label='End Date' name='end-date' placeholder='Month Year' type='text' text={workInfo.myDateEnd} onTyping={handleEndTyping} />
+            <textarea placeholder='Details' value={workInfo.myDetails} onChange={handleDetailsTyping}></textarea>
             <Button className='form-submit' type='submit' title="Submit" />
         </form>
     )
