@@ -1,6 +1,6 @@
 
 // eslint-disable-next-line react/prop-types
-export default function Input({className, label, placeholder, type, name, text, onTyping}) {
+function Input({className, label, placeholder, type, name, text, onTyping}) {
 
         return (
             <label>
@@ -16,3 +16,22 @@ export default function Input({className, label, placeholder, type, name, text, 
             </label>
         )
 }
+
+function ParagraphInput({ className, label, placeholder, name, text, onTyping }) {
+    return (
+        <label>
+            {label}
+            <textarea
+                className={className}
+                placeholder={placeholder}
+                name={name}
+                key={name}
+                value={text}
+                onChange={onTyping}
+            >    
+            </textarea>
+         </label>
+     )
+}
+ 
+export {Input, ParagraphInput}

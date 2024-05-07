@@ -29,6 +29,17 @@ label input {
     transform: translate(300%, 0%);
 }
 
+.work-container {
+    position: relative;
+}
+
+.work-container > .add-bullet-btn {
+    position: absolute;
+    background-color: aquamarine;
+    top: 3.5rem;
+    right: 4.5rem;
+}
+
 
 input {
     margin-left: 1rem;

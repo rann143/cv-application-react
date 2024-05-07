@@ -1,8 +1,9 @@
-import Input from './Input'
+import {Input, ParagraphInput} from './Input'
 import { ContactDisplay, EduDisplay, WorkDisplay } from './Display';
 import Button from './Button';
 import '../styles/forms.css';
 import { useState } from 'react';
+import BulletWrapper from './PracticeForms';
 
 
 // eslint-disable-next-line react/prop-types
@@ -101,8 +102,8 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
         <form className='edu-form' onSubmit={handleSubmit}>
             <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={eduInfo.mySchool} onTyping={handleSchoolTyping} />
             <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={eduInfo.myDegree} onTyping={handleDegreeTyping} />
-            <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='2017' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
-            <textarea placeholder='Additional Info (Optional)' value={eduInfo.myAdditionalInfo} onChange={handleAdditionalInfoTyping}></textarea>
+            <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Month Year' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
+            <ParagraphInput label='Bulletpoint' placeholder='Additional Info (Optional)' text={eduInfo.myAdditionalInfo} onTyping={handleAdditionalInfoTyping} />
             <Button className='form-submit' type='submit' title="Submit" />
         </form>
     )
@@ -112,7 +113,13 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
 // eslint-disable-next-line react/prop-types
 function WorkForm({ company, position, dateStart, dateEnd, details }) {
     const [isSent, setIsSent] = useState(false);
-    const [workInfo, setWorkInfo] = useState({ myCompany: company, myPosition: position, myDateStart: dateStart, myDateEnd: dateEnd, myDetails: details });
+    const [workInfo, setWorkInfo] = useState({
+        myCompany: company,
+        myPosition: position,
+        myDateStart: dateStart,
+        myDateEnd: dateEnd,
+        myDetails: details
+    });
 
     function handleCompanyTyping(e) {
         setWorkInfo({...workInfo, myCompany: e.target.value})
@@ -138,6 +145,7 @@ function WorkForm({ company, position, dateStart, dateEnd, details }) {
         setIsSent(true);
     }
 
+
     if (isSent) {
 
         return (
@@ -153,14 +161,17 @@ function WorkForm({ company, position, dateStart, dateEnd, details }) {
     }
 
     return (
+        <div className='work-container'>
         <form className='work-form' onSubmit={handleSubmit}>
             <Input className='work-input' label='Company' name='school' placeholder='Name' type='text' text={workInfo.myCompany} onTyping={handleCompanyTyping} />
             <Input className='work-input' label='Position' name='degree' placeholder='Title' type='text' text={workInfo.myPosition} onTyping={handlePositionTyping} />
             <Input className='work-input' label='Start Date' name='start-date' placeholder='Month Year' type='text' text={workInfo.myDateStart} onTyping={handleStartTyping} />
             <Input className='work-input' label='End Date' name='end-date' placeholder='Month Year' type='text' text={workInfo.myDateEnd} onTyping={handleEndTyping} />
-            <textarea placeholder='Details' value={workInfo.myDetails} onChange={handleDetailsTyping}></textarea>
+            <ParagraphInput label='Bulletpoint' placeholder='detail about your accomplishments' text={workInfo.myDetails} onTyping={handleDetailsTyping} />
             <Button className='form-submit' type='submit' title="Submit" />
         </form>
+        <Button className='add-bullet-btn' type='button' title='+ Bullet'/>
+        </div>
     )
 
 

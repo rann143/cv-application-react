@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { ContactForm, EduForm, WorkForm } from "./Form";
 import Button from "./Button";
+import BulletList from "./BulletPoint";
 import { useState } from "react";
 import '../styles/display.css'
 
@@ -63,7 +64,9 @@ function EduDisplay({ className, school, degree, gradDate, additionalInfo }) {
             </div>
             <span>{degree}</span>
             
-            <div>{additionalInfo}</div>
+            <ul>
+                <li>{additionalInfo}</li>
+            </ul>
             <Button className='edit-btn' title='Edit' type='button' onClick={handleEdit} />
         </div>
     )
@@ -91,6 +94,8 @@ function WorkDisplay({ className, company, position, dateStart, dateEnd, details
         )
     }
 
+    
+
     return (
         <div className={className}>
             <h2>EXPERIENCE</h2>
@@ -98,7 +103,9 @@ function WorkDisplay({ className, company, position, dateStart, dateEnd, details
                 <p className='company-name'>{company}</p><div className="date"><time>{dateStart}</time> - <time>{dateEnd}</time></div>
             </div>
             <span>{position}</span>
-            <div>{details}</div>
+            <ul>
+                <li> {details} </li>
+            </ul>
             <Button className='edit-btn' title='Edit' type='button' onClick={handleEdit} />
         </div>
     )
