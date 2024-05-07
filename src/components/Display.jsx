@@ -57,9 +57,12 @@ function EduDisplay({ className, school, degree, gradDate, additionalInfo }) {
     return (
         <div className={className}>
             <h2>EDUCATION</h2>
-            <h3>{school}</h3>
+            <div className='title-date-line'>
+                <p className='school-name' >{school}</p>
+                <div className="date"><time>{gradDate}</time></div>
+            </div>
             <span>{degree}</span>
-            <time>{gradDate}</time>
+            
             <div>{additionalInfo}</div>
             <Button className='edit-btn' title='Edit' type='button' onClick={handleEdit} />
         </div>
@@ -91,10 +94,10 @@ function WorkDisplay({ className, company, position, dateStart, dateEnd, details
     return (
         <div className={className}>
             <h2>EXPERIENCE</h2>
-            <h3>{company}</h3>
+            <div className='title-date-line'>
+                <p className='company-name'>{company}</p><div className="date"><time>{dateStart}</time> - <time>{dateEnd}</time></div>
+            </div>
             <span>{position}</span>
-            <time>{dateStart}</time>
-            <time>{dateEnd}</time>
             <div>{details}</div>
             <Button className='edit-btn' title='Edit' type='button' onClick={handleEdit} />
         </div>

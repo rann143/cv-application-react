@@ -37,12 +37,25 @@
     margin: 0;
 }
 
-.edu-display > h3 {
-    margin: 0;
-    padding: 0;
+.work-display > .title-date-line {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
-.edu-display > span {
+
+.edu-display > .title-date-line {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.school-name, .company-name {
     font-weight: bold;
+    margin: 0;
+} 
+
+.date {
+    display: inline;
 }
 
 @media print {
