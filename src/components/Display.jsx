@@ -28,12 +28,12 @@ function EduDisplay({isActive, onShow, school, degree, gradDate, bullets = [] })
 
     return (
         <div className={isActive ? 'edu-display' : 'hidden'}>
-            <h2>EDUCATION</h2>
+            
             <div className='title-date-line'>
                 <p className='school-name' >{school}</p>
                 <div className="date"><time>{gradDate}</time></div>
             </div>
-            <span>{degree}</span>
+            <span><i>{degree}</i></span>
             
             <ul>
                 {
@@ -56,7 +56,7 @@ function WorkDisplay({ isActive, onShow, company, position, dateStart, dateEnd, 
 
     return (
         <div className={isActive ? 'work-display' : "hidden"}>
-            <h2>EXPERIENCE</h2>
+            
             <div className='title-date-line'>
                 <p className='company-name'>{company}</p><div className="date"><time>{dateStart}</time> - <time>{dateEnd}</time></div>
             </div>

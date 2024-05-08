@@ -29,7 +29,6 @@ function EduForm({isActive, onShow, onAddBullet, onRemoveBullet, onBulletTyping,
 
     return (
         <form className={isActive ? 'edu-form' : 'hidden'}>
-            <h2>Education:</h2>
             <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={school} onTyping={onSchoolTyping} />
             <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={degree} onTyping={onDegreeTyping} />
             <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Month Year' type='text' text={gradDate} onTyping={onGradDateTyping} />

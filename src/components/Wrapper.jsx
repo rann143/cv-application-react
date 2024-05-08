@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ContactForm, EduForm, WorkForm } from "./Form";
 import { ContactDisplay, EduDisplay, WorkDisplay } from './Display';
 import { Input, ParagraphInput } from "./Input";
+import Button from "./Button";
 
 //QUESTION: Can I create a single, overall Wrapper Component if could pass props into instead of 3 separate ones ???
 
@@ -52,6 +53,7 @@ function ContactWrapper() {
             cell={info.cell}
             linkedIn={info.linkedIn}
         />
+        
             
         </>
         
@@ -122,6 +124,8 @@ function EducationWrapper() {
                 gradDate={info.gradDate}
                 bullets={bullets}
             />
+
+            {/* <Button type='button' title='Remove Education' onClick={() => onRemoveWrapper(index)}/> */}
         </>
     )
 }
