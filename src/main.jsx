@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-//import App from './components/App.jsx'
+import App from './components/App.jsx'
 import './styles/index.css'
 import { ContactForm, EduForm, WorkForm } from './components/Form.jsx';
 import {ContactWrapper, EducationWrapper, WorkExperienceWrapper} from './components/Wrapper.jsx';
@@ -9,9 +9,6 @@ import {ContactWrapper, EducationWrapper, WorkExperienceWrapper} from './compone
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <h2>RESUME BUILDER</h2>
-    <ContactWrapper />
-    <EducationWrapper />
-    <WorkExperienceWrapper />
+    <App />
   </React.StrictMode>,
 )
