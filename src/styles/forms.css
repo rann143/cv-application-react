@@ -48,3 +48,7 @@ input {
 textarea {
     margin: 0.25rem;
 }
+
+.hidden {
+    display: none;
+}

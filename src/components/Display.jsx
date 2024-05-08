@@ -37,27 +37,12 @@ function ContactDisplay({ className, name, email, cell }) {
 }
 
 // eslint-disable-next-line react/prop-types
-function EduDisplay({ className, school, degree, gradDate, additionalInfos }) {
-    const [isEditing, setIsEditing] = useState(false)
+function EduDisplay({isActive, onShow, school, degree, gradDate, bullets = [] }) {
 
-    function handleEdit(e) {
-        e.preventDefault();
-        setIsEditing(true);
-    }
-
-    if (isEditing) {
-        return (
-            <EduForm
-                school={school}
-                degree={degree}
-                gradDate={gradDate}
-                additionalInfos={additionalInfos}
-            />
-        )
-    }
+    const filteredBullets = bullets.filter(bullet => bullet.value !== '' )
 
     return (
-        <div className={className}>
+        <div className={isActive ? 'edu-display' : 'hidden'}>
             <h2>EDUCATION</h2>
             <div className='title-date-line'>
                 <p className='school-name' >{school}</p>
@@ -66,12 +51,14 @@ function EduDisplay({ className, school, degree, gradDate, additionalInfos }) {
             <span>{degree}</span>
             
             <ul>
-                {additionalInfos.map(info => {
-                    return <li key={uuidv4()}>{info}</li>
-                })}
-                {/* <li>{additionalInfo}</li> */}
+                {
+                    filteredBullets.length > 0 &&
+                    filteredBullets.map(bullet => {
+                        return <li key={uuidv4()}>{bullet.value}</li>
+                    })
+                }
             </ul>
-            <Button className='edit-btn' title='Edit' type='button' onClick={handleEdit} />
+            <Button className='edit-btn' title='Edit' type='button' onClick={onShow} />
         </div>
     )
     

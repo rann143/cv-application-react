@@ -58,60 +58,30 @@ function ContactForm({name, email, cell}) {
 }
 
 // eslint-disable-next-line react/prop-types
-function EduForm({className, school, degree, gradDate, additionalInfos = [] }) {
-    const [isSent, setIsSent] = useState(false);
-    const [eduInfo, setEduInfo] = useState({ mySchool: school, myDegree: degree, myGradDate: gradDate })
-    const [details, setDetails] = useState(additionalInfos);
-
+function EduForm({isActive, onShow, onAddBullet, onRemoveBullet, onBulletTyping, onSchoolTyping, onDegreeTyping, onGradDateTyping, school, degree, gradDate, bullets = [] }) {
     
-    
-     function handleSchoolTyping(e) {
-        setEduInfo({...eduInfo, mySchool: e.target.value})
-    }
-    function handleDegreeTyping(e) {
-        setEduInfo({...eduInfo, myDegree: e.target.value})
-    }
-    function handleGradTyping(e) {
-        setEduInfo({...eduInfo, myGradDate: e.target.value})
-    }
-
-    function handleAdditionalInfoTyping(e) {
-        setDetails([...details, e.target.value])
-    }
-
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        if (!eduInfo.mySchool && !eduInfo.myDegree && !eduInfo.myGradDate && !eduInfo.myAdditionalInfo) {
-            return alert('Please enter Education')
-        }
-        setIsSent(true);
-    }
-
-    if (isSent) {
-
-        return (
-            <EduDisplay
-                className="edu-display"
-                school={eduInfo.mySchool}
-                degree={eduInfo.myDegree}
-                gradDate={eduInfo.myGradDate}
-                additionalInfos={details}
-            />
-        )
-    }
-
-    const bulletWrapper = <BulletWrapper placeholder='Additional Details (Optional)' texts={details} onTyping={handleAdditionalInfoTyping} />
-
 
     return (
-        <form className={'edu-form'} onSubmit={handleSubmit}>
-            <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={eduInfo.mySchool} onTyping={handleSchoolTyping} />
-            <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={eduInfo.myDegree} onTyping={handleDegreeTyping} />
-            <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Month Year' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
-            {/* <ParagraphInput label='Bulletpoint' placeholder='Additional Info (Optional)' text={eduInfo.myAdditionalInfo} onTyping={handleAdditionalInfoTyping} /> */}
-            {bulletWrapper}
-            <Button className='form-submit' type='submit' title="Submit" />
+        <form className={isActive ? 'edu-form' : 'hidden'}>
+            <h2>Education:</h2>
+            <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={school} onTyping={onSchoolTyping} />
+            <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={degree} onTyping={onDegreeTyping} />
+            <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Month Year' type='text' text={gradDate} onTyping={onGradDateTyping} />
+            <div>
+                {
+                bullets.map((bullet, index) => {
+                    return (
+                        <>
+                        <ParagraphInput key={index} placeholder="Add Bullet" text={bullet.value} onTyping={(e) => onBulletTyping(index, e)} />
+                        <Button type='button' title='Delete' onClick={() => onRemoveBullet(index)}/>
+                        </>
+                    )
+                })
+                
+                }
+                <Button type='button' title="Add Detail" onClick={onAddBullet}/>
+            </div>
+            <Button className='form-submit' type='submit' title="Submit" onClick={onShow}/>
         </form>
     )
 

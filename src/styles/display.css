@@ -58,6 +58,10 @@
     display: inline;
 }
 
+.hidden {
+    display: none;
+}
+
 @media print {
     .edit-btn {
         visibility: hidden;
