@@ -5,6 +5,7 @@ import { ContactForm, EduForm, WorkForm } from "./Form";
 import { ContactDisplay, EduDisplay, WorkDisplay } from './Display';
 import { Input, ParagraphInput } from "./Input";
 
+//QUESTION: Can I create a single, overall Wrapper Component if could pass props into instead of 3 separate ones ???
 
 function ContactWrapper() {
     const [activeIndex, setActiveIndex] = useState(0);
