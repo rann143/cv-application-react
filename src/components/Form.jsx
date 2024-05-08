@@ -58,9 +58,12 @@ function ContactForm({name, email, cell}) {
 }
 
 // eslint-disable-next-line react/prop-types
-function EduForm({ school, degree, gradDate, additionalInfo }) {
+function EduForm({className, school, degree, gradDate, additionalInfos = [] }) {
     const [isSent, setIsSent] = useState(false);
-    const [eduInfo, setEduInfo] = useState({ mySchool: school, myDegree: degree, myGradDate: gradDate, myAdditionalInfo: additionalInfo })
+    const [eduInfo, setEduInfo] = useState({ mySchool: school, myDegree: degree, myGradDate: gradDate })
+    const [details, setDetails] = useState(additionalInfos);
+
+    
     
      function handleSchoolTyping(e) {
         setEduInfo({...eduInfo, mySchool: e.target.value})
@@ -73,7 +76,7 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
     }
 
     function handleAdditionalInfoTyping(e) {
-        setEduInfo({...eduInfo, myAdditionalInfo: e.target.value})
+        setDetails([...details, e.target.value])
     }
 
 
@@ -93,19 +96,21 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
                 school={eduInfo.mySchool}
                 degree={eduInfo.myDegree}
                 gradDate={eduInfo.myGradDate}
-                additionalInfo={eduInfo.myAdditionalInfo}
+                additionalInfos={details}
             />
         )
     }
 
+    const bulletWrapper = <BulletWrapper placeholder='Additional Details (Optional)' texts={details} onTyping={handleAdditionalInfoTyping} />
+
 
     return (
-        <form className='edu-form' onSubmit={handleSubmit}>
+        <form className={'edu-form'} onSubmit={handleSubmit}>
             <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={eduInfo.mySchool} onTyping={handleSchoolTyping} />
             <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={eduInfo.myDegree} onTyping={handleDegreeTyping} />
             <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Month Year' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
             {/* <ParagraphInput label='Bulletpoint' placeholder='Additional Info (Optional)' text={eduInfo.myAdditionalInfo} onTyping={handleAdditionalInfoTyping} /> */}
-            <BulletWrapper placeholder='Additional Details (Optional)' text={eduInfo.myAdditionalInfo} onTyping={handleAdditionalInfoTyping} />
+            {bulletWrapper}
             <Button className='form-submit' type='submit' title="Submit" />
         </form>
     )

@@ -4,6 +4,7 @@ import Button from "./Button";
 import BulletList from "./BulletPoint";
 import { useState } from "react";
 import '../styles/display.css'
+import { v4 as uuidv4 } from 'uuid';
 
 // eslint-disable-next-line react/prop-types
 function ContactDisplay({ className, name, email, cell }) {
@@ -36,7 +37,7 @@ function ContactDisplay({ className, name, email, cell }) {
 }
 
 // eslint-disable-next-line react/prop-types
-function EduDisplay({ className, school, degree, gradDate, additionalInfo }) {
+function EduDisplay({ className, school, degree, gradDate, additionalInfos }) {
     const [isEditing, setIsEditing] = useState(false)
 
     function handleEdit(e) {
@@ -50,7 +51,7 @@ function EduDisplay({ className, school, degree, gradDate, additionalInfo }) {
                 school={school}
                 degree={degree}
                 gradDate={gradDate}
-                additionalInfo={additionalInfo}
+                additionalInfos={additionalInfos}
             />
         )
     }
@@ -65,7 +66,10 @@ function EduDisplay({ className, school, degree, gradDate, additionalInfo }) {
             <span>{degree}</span>
             
             <ul>
-                <li>{additionalInfo}</li>
+                {additionalInfos.map(info => {
+                    return <li key={uuidv4()}>{info}</li>
+                })}
+                {/* <li>{additionalInfo}</li> */}
             </ul>
             <Button className='edit-btn' title='Edit' type='button' onClick={handleEdit} />
         </div>

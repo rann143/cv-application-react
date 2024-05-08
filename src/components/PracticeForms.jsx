@@ -9,9 +9,9 @@ import { v4 as uuidv4 } from 'uuid';
         delBtnId: uuidv4()
     }
 
-export default function BulletWrapper({placeholder, text, onTyping}) {
+export default function BulletWrapper({placeholder, texts, onTyping}) {
     const [bulletPrompts, setBulletPrompts] = useState([{
-            input: <ParagraphInput key={initialIds.inputId} placeholder={placeholder} value={text} onTyping={onTyping} />,
+            input: <ParagraphInput key={initialIds.inputId} placeholder={placeholder} text={texts[0]} onTyping={onTyping} />,
             inputId: initialIds.inputId,
         delBtnId: initialIds.delBtnId,
     }]);
@@ -30,7 +30,7 @@ export default function BulletWrapper({placeholder, text, onTyping}) {
         const newId = uuidv4()
         const delBtnId = uuidv4()
         setBulletPrompts([...bulletPrompts, {
-            input: <ParagraphInput key={newId} placeholder={placeholder} value={text} onTyping={onTyping} />,
+            input: <ParagraphInput key={newId} placeholder={placeholder} text={texts[1]} onTyping={onTyping} />,
             inputId: newId,
             delBtnId: delBtnId,
         }])
