@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {Input, ParagraphInput} from './Input'
 import { ContactDisplay, EduDisplay, WorkDisplay } from './Display';
 import Button from './Button';
@@ -103,7 +104,8 @@ function EduForm({ school, degree, gradDate, additionalInfo }) {
             <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={eduInfo.mySchool} onTyping={handleSchoolTyping} />
             <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={eduInfo.myDegree} onTyping={handleDegreeTyping} />
             <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Month Year' type='text' text={eduInfo.myGradDate} onTyping={handleGradTyping} />
-            <ParagraphInput label='Bulletpoint' placeholder='Additional Info (Optional)' text={eduInfo.myAdditionalInfo} onTyping={handleAdditionalInfoTyping} />
+            {/* <ParagraphInput label='Bulletpoint' placeholder='Additional Info (Optional)' text={eduInfo.myAdditionalInfo} onTyping={handleAdditionalInfoTyping} /> */}
+            <BulletWrapper placeholder='Additional Details (Optional)' text={eduInfo.myAdditionalInfo} onTyping={handleAdditionalInfoTyping} />
             <Button className='form-submit' type='submit' title="Submit" />
         </form>
     )
