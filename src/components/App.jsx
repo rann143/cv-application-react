@@ -1,22 +1,54 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import '../styles/App.css'
-import { ContactWrapper, EducationWrapper, WorkExperienceWrapper } from './Wrapper'
+import {Education, WorkExperience, ContactWrapper, EducationWrapper, WorkExperienceWrapper } from './Wrapper'
 import Button from './Button'
 
 function App() {
   const [educs, setEducs] = useState([{ wrapper: <EducationWrapper /> }])
   const [workXps, setWorkXps] = useState([{ wrapper: <WorkExperienceWrapper /> }])
 
+  const [educList, setEducList] = useState([{ school: "Tulane University", degree: "B.S. Economics", gradDate: "2021", id: uuidv4() },
+    { school: "Harvard", degree: "B.S. Physics", gradDate: "2016", id: uuidv4() },
+    { school: "UMass Amherst", degree: "B.S. Comp. Sci.", gradDate: "2005", id: uuidv4() }])
 
-  function addEducation() {
-    setEducs([...educs, { wrapper: <EducationWrapper /> }])
+  const [workList, setWorkList] = useState([{ company: "Toast", position: "Growth Sales Account Executive", startDate: "Oct 2023", endDate: "Dec 2023", id: uuidv4() },
+    { company: "NOLABA", position: "Strategic Neighbodhood Development Intern", startDate: "Jan 2020", endDate: "Aug 2020", id: uuidv4() },
+    { company: "Epson America", position: "Product Management Inter", startDate: "June 2021", endDate: "Aug 2023", id: uuidv4() }
+  ])
+                                            
+
+  const arrEducationWrappers = educList.map(educ => (
+    <EducationWrapper
+      education={educ}
+      educList={educList}
+      setEducList={setEducList}
+      key={educ.id}
+    />
+  ))
+
+  const arrWorkWrappers = workList.map(work => 
+    <WorkExperienceWrapper
+      work={work}
+      workList={workList}
+      setWorkList={setWorkList}
+      key={work.id}
+    />
+  )
+
+  function handleAddEducation() {
+    const updatedEducList = [...educList]
+    updatedEducList.push(new Education(uuidv4()))
+    setEducList(updatedEducList)
   }
 
-  function addWorkExperience() {
-    setWorkXps([...workXps, { wrapper: <WorkExperienceWrapper /> }])
+  function handleAddWorkExperience() {
+    const updatedWorkList = [...workList]
+    updatedWorkList.push(new WorkExperience(uuidv4()));
+    setWorkList(updatedWorkList)
   }
 
   function handleRemoveEducation(index) {
@@ -33,34 +65,18 @@ function App() {
 
   return (
     <div>
-       <h2>RESUME BUILDER</h2>
-      <ContactWrapper />
+       {/* <h2>RESUME BUILDER</h2>
+      <ContactWrapper /> */}
       <h2>EDUCATION</h2>
 
-      {
-        educs.map((educ, index) => {
-          
+      {arrEducationWrappers}
+      <Button type='button' title='Add Education' onClick={handleAddEducation} />
 
-         return (
-            <div key={index}>
-              <div>{educ.wrapper}</div>
-              {/* <button type='button' onClick={() => handleRemoveEducation(index)}>Delete Educ</button> */}
-              <Button type='button' title='Delete Education' onClick={() => handleRemoveEducation(index)} />
-            </div>
-          )
-          
-        })
-      }
+       <h2>EXPERIENCE</h2>
 
-      <Button type='button' title='Add Education' onClick={addEducation} />
-
-      <h2>EXPERIENCE</h2>
-      {
-        workXps.map(workXp => {
-          return workXp.wrapper;
-        })
-      }
-      <Button type='button' title='Add Work Experience' onClick={addWorkExperience} />
+      {arrWorkWrappers}
+      <Button type='button' title='Add Work Experience' onClick={handleAddWorkExperience} />
+      
     </div>
   )
 }

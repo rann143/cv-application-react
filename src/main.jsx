@@ -10,5 +10,6 @@ import {ContactWrapper, EducationWrapper, WorkExperienceWrapper} from './compone
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
+    {/* <div id="fake_textarea" contentEditable>Hey There</div> */}
   </React.StrictMode>,
 )

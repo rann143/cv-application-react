@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
@@ -7,6 +8,25 @@ import { Input, ParagraphInput } from "./Input";
 import Button from "./Button";
 
 //QUESTION: Can I create a single, overall Wrapper Component if could pass props into instead of 3 separate ones ???
+class Education {
+    constructor(uuid) {
+        this.school = '';
+        this.degree = '';
+        this.gradDate = '';
+        this.id = uuid;
+    }
+}
+
+class WorkExperience {
+    constructor(uuid) {
+        this.company = '';
+        this.position = '';
+        this.startDate = '';
+        this.endDate = '';
+        this.id = uuid
+    }
+}
+
 
 function ContactWrapper() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -63,13 +83,13 @@ function ContactWrapper() {
 }
 
 // eslint-disable-next-line react/prop-types
-function EducationWrapper() {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [info, setInfo] = useState({ school: "", degree: "", gradDate: "" });
+function EducationWrapper({education = new Education(uuidv4()), educList, setEducList}) {
+    const [activeIndex, setActiveIndex] = useState(1);
     const [bullets, setBullets] = useState([{ value: '' }]);
  
 
     function handleBulletTyping(index, event) {
+
         const newValues = [...bullets]
         newValues[index].value = event.target.value;
         setBullets(newValues);
@@ -85,16 +105,36 @@ function EducationWrapper() {
         setBullets(newBullets);
     }
 
-   function handleSchoolTyping(e) {
-        setInfo({...info, school: e.target.value})
+    function handleSchoolTyping(e) {
+       
+        const updatedEducation = {...education, school: e.target.value}
+        const updatedEducList = educList.map(educ =>
+             educ.id === updatedEducation.id ? updatedEducation : educ
+        )
+        setEducList(updatedEducList)
     }
    function handleDegreeTyping(e) {
-        setInfo({...info, degree: e.target.value})
+        const updatedEducation = {...education, degree: e.target.value}
+        const updatedEducList = educList.map(educ =>
+             educ.id === updatedEducation.id ? updatedEducation : educ
+        )
+        setEducList(updatedEducList)
     }
    function handleGradDateTyping(e) {
-        setInfo({...info, gradDate: e.target.value})
+        const updatedEducation = {...education, gradDate: e.target.value}
+        const updatedEducList = educList.map(educ =>
+             educ.id === updatedEducation.id ? updatedEducation : educ
+        )
+        setEducList(updatedEducList)
    }
 
+    function handleDelete() {
+        const updatedEducList = educList.filter(educ => 
+            educ.id !== education.id
+        )
+
+        setEducList(updatedEducList)
+    }
     
     return (
         <>
@@ -105,9 +145,9 @@ function EducationWrapper() {
                     e.preventDefault();
                     setActiveIndex(1)
                 }}
-                school={info.school}
-                degree={info.degree}
-                gradDate={info.gradDate}
+                school={education.school}
+                degree={education.degree}
+                gradDate={education.gradDate}
                 bullets={bullets}
                 onSchoolTyping={handleSchoolTyping}
                 onDegreeTyping={handleDegreeTyping}
@@ -115,24 +155,25 @@ function EducationWrapper() {
                 onAddBullet={handleAddBullet}
                 onBulletTyping={handleBulletTyping}
                 onRemoveBullet={handleRemoveBullet}
+                
             />
             <EduDisplay
                 isActive={activeIndex === 1}
                 onShow={(e) => setActiveIndex(0)}
-                school={info.school}
-                degree={info.degree}
-                gradDate={info.gradDate}
+                school={education.school}
+                degree={education.degree}
+                gradDate={education.gradDate}
                 bullets={bullets}
             />
 
+            <Button type='button' title='remove' onClick={handleDelete}/>
             {/* <Button type='button' title='Remove Education' onClick={() => onRemoveWrapper(index)}/> */}
         </>
     )
 }
 
-function WorkExperienceWrapper() {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [info, setInfo] = useState({ company: '', position: '', dateStart: '', dateEnd: '' });
+function WorkExperienceWrapper({work = new WorkExperience(uuidv4()), workList, setWorkList}) {
+    const [activeIndex, setActiveIndex] = useState(1);
     const [bullets, setBullets] = useState([{ value: '' }]);
 
     function handleBulletTyping(index, event) {
@@ -152,18 +193,46 @@ function WorkExperienceWrapper() {
     }
 
     function handleCompanyTyping(e) {
-        setInfo({...info, company: e.target.value})
+        const updatedWork = {...work, company: e.target.value}
+        const updatedWorkList = workList.map(work => 
+            work.id === updatedWork.id ? updatedWork : work
+        )
+
+        setWorkList(updatedWorkList)
+
     }
    function handlePositionTyping(e) {
-        setInfo({...info, position: e.target.value})
+        const updatedWork = {...work, position: e.target.value}
+        const updatedWorkList = workList.map(work => 
+            work.id === updatedWork.id ? updatedWork : work
+        )
+
+        setWorkList(updatedWorkList)
     }
    function handleStartDateTyping(e) {
-        setInfo({...info, startDate: e.target.value})
+        const updatedWork = {...work, startDate: e.target.value}
+        const updatedWorkList = workList.map(work => 
+            work.id === updatedWork.id ? updatedWork : work
+        )
+
+        setWorkList(updatedWorkList)
    }
    function handleEndDateTyping(e) {
-        setInfo({...info, endDate: e.target.value})
+        const updatedWork = {...work, endDate: e.target.value}
+        const updatedWorkList = workList.map(workItem => 
+            workItem.id === updatedWork.id ? updatedWork : workItem
+        )
+
+        setWorkList(updatedWorkList)
    }
 
+    function handleDelete() {
+        const updatedWorkList = workList.filter(workItem => 
+          work.id !== workItem.id 
+        )
+        setWorkList(updatedWorkList)
+    }
+    
     return (
         <>
             
@@ -174,10 +243,10 @@ function WorkExperienceWrapper() {
                 e.preventDefault();
                 setActiveIndex(1)
             }}
-            company={info.company}
-            position={info.position}
-            dateStart={info.startDate}
-            dateEnd={info.endDate}
+            company={work.company}
+            position={work.position}
+            dateStart={work.startDate}
+            dateEnd={work.endDate}
             bullets={bullets}
             onCompanyTyping={handleCompanyTyping}
             onPositionTyping={handlePositionTyping}
@@ -191,16 +260,17 @@ function WorkExperienceWrapper() {
         <WorkDisplay 
             isActive={activeIndex === 1}
             onShow={(e) => setActiveIndex(0)}
-            company={info.company}
-            position={info.position}
-            dateStart={info.startDate}
-            dateEnd={info.endDate}
+            company={work.company}
+            position={work.position}
+            dateStart={work.startDate}
+            dateEnd={work.endDate}
             bullets={bullets}
         />
 
+        <Button type='button' title='remove' onClick={handleDelete}/>
         </>
     )
 
 }
 
-export {ContactWrapper, EducationWrapper, WorkExperienceWrapper}
+export {Education, WorkExperience, ContactWrapper, EducationWrapper, WorkExperienceWrapper}

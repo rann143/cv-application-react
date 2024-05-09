@@ -18,14 +18,13 @@ function Input({className, label, placeholder, type, name, text, onTyping}) {
         )
 }
 
-function ParagraphInput({ className, label, placeholder, key, text, onTyping }) {
+function ParagraphInput({ className, label, placeholder, text, onTyping }) {
     return (
         <label>
             {label}
             <textarea
                 className={className}
                 placeholder={placeholder}
-                key={key}
                 value={text}
                 onChange={onTyping}
             >    
