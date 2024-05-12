@@ -26,6 +26,8 @@ a:hover {
 #root {
   width: 100%;
   max-width: 800px;
+  padding: 0;
+  margin: 0;
 }
 
 #root > h2 {
@@ -34,10 +36,16 @@ a:hover {
 }
 
 @media print {
-  #root > h2 {
+  #page-title {
     display: none;
   }
 }
+
+#root > div > h2 {
+  font-size: 20px;
+}
+
+
 
 body {
   margin: 2rem;

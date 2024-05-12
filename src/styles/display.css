@@ -37,16 +37,28 @@
     margin: 0;
 }
 
+ul {
+    margin: 0;
+}
+
 .work-display > .title-date-line {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
+.work-display li {
+    text-align: left;
+}
+
 .edu-display > .title-date-line {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.edu-display li {
+    text-align: left;
 }
 
 .school-name, .company-name {
@@ -62,8 +74,15 @@
     display: none;
 }
 
+h2 {
+    text-align: left;
+    margin: 1rem 0 0 0;
+    padding: 0;
+}
+
 @media print {
-    .edit-btn {
+    button {
+        display: none;
         visibility: hidden;
     }
 }
