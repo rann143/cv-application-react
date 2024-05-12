@@ -85,7 +85,7 @@ function ContactWrapper() {
 // eslint-disable-next-line react/prop-types
 function EducationWrapper({education = new Education(uuidv4()), educList, setEducList}) {
     const [activeIndex, setActiveIndex] = useState(1);
-    const [bullets, setBullets] = useState([{ value: '' }]);
+    const [bullets, setBullets] = useState([{ value: 'GPA: 4.0; Distinguished Scholars Scholarship (Full)' }]);
  
 
     function handleBulletTyping(index, event) {
@@ -174,7 +174,7 @@ function EducationWrapper({education = new Education(uuidv4()), educList, setEdu
 
 function WorkExperienceWrapper({work = new WorkExperience(uuidv4()), workList, setWorkList}) {
     const [activeIndex, setActiveIndex] = useState(1);
-    const [bullets, setBullets] = useState([{ value: '' }]);
+    const [bullets, setBullets] = useState([{ value: 'Achieved 200% to required benchmarks' }, {value: 'Led team in over-achieving expectations and growing company revenue'}, {value: 'Mentored new hires, consistently training hires that became top-performers on their respective teams'}]);
 
     function handleBulletTyping(index, event) {
         const newValues = [...bullets]

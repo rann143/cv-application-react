@@ -11,13 +11,12 @@ function App() {
   const [educs, setEducs] = useState([{ wrapper: <EducationWrapper /> }])
   const [workXps, setWorkXps] = useState([{ wrapper: <WorkExperienceWrapper /> }])
 
-  const [educList, setEducList] = useState([{ school: "Tulane University", degree: "B.S. Economics", gradDate: "2021", id: uuidv4() },
-    { school: "Harvard", degree: "B.S. Physics", gradDate: "2016", id: uuidv4() },
-    { school: "UMass Amherst", degree: "B.S. Comp. Sci.", gradDate: "2005", id: uuidv4() }])
+  const [educList, setEducList] = useState([{ school: "University", degree: "B.S. Computer Science", gradDate: "2021", id: uuidv4() },
+    { school: "College", degree: "B.S. Physics", gradDate: "May 2016", id: uuidv4() }])
 
-  const [workList, setWorkList] = useState([{ company: "Toast", position: "Growth Sales Account Executive", startDate: "Oct 2023", endDate: "Dec 2023", id: uuidv4() },
-    { company: "NOLABA", position: "Strategic Neighbodhood Development Intern", startDate: "Jan 2020", endDate: "Aug 2020", id: uuidv4() },
-    { company: "Epson America", position: "Product Management Inter", startDate: "June 2021", endDate: "Aug 2023", id: uuidv4() }
+  const [workList, setWorkList] = useState([{ company: "Company", position: "Account Executive", startDate: "Oct 2023", endDate: "Dec 2023", id: uuidv4() },
+    { company: "Company 2", position: "Sales Development Representative", startDate: "Jan 2020", endDate: "Aug 2020", id: uuidv4() },
+    { company: "Company 3", position: "Product Management Intern", startDate: "June 2021", endDate: "Aug 2023", id: uuidv4() }
   ])
                                             
 
@@ -65,14 +64,16 @@ function App() {
 
   return (
     <div>
-       {/* <h2>RESUME BUILDER</h2>
-      <ContactWrapper /> */}
+       <h2 id='page-title'>RESUME BUILDER</h2>
+      <ContactWrapper />
       <h2>EDUCATION</h2>
+      <hr/>
 
       {arrEducationWrappers}
       <Button type='button' title='Add Education' onClick={handleAddEducation} />
 
-       <h2>EXPERIENCE</h2>
+      <h2>EXPERIENCE</h2>
+      <hr/>
 
       {arrWorkWrappers}
       <Button type='button' title='Add Work Experience' onClick={handleAddWorkExperience} />
