@@ -18,9 +18,7 @@
   color: rgb(43, 43, 43);
 }
 
-body {
-  padding: 3rem;
-}
+
 
 a {
   font-weight: 500;
@@ -56,7 +54,8 @@ a:hover {
 
 
 body {
-  margin: 2rem;
+  margin: 0 2rem 2rem 2rem;
+  padding: 0 3rem 3rem 3rem;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -99,5 +98,12 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media print {
+  #page-title {
+    display: none;
+    visibility: hidden;
   }
 }
