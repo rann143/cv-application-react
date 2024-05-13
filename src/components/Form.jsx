@@ -31,7 +31,7 @@ function EduForm({isActive, onShow, onAddBullet, onRemoveBullet, onBulletTyping,
         <form className={isActive ? 'edu-form' : 'hidden'}>
             <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={school} onTyping={onSchoolTyping} />
             <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={degree} onTyping={onDegreeTyping} />
-            <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Month Year' type='text' text={gradDate} onTyping={onGradDateTyping} />
+            <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Date' type='text' text={gradDate} onTyping={onGradDateTyping} />
             <div className='bullet-div'>
             Additional Details:
                 {
@@ -47,7 +47,7 @@ function EduForm({isActive, onShow, onAddBullet, onRemoveBullet, onBulletTyping,
                 }
                 <Button className='add-detail-btn' type='button' title="+ Add Detail" onClick={onAddBullet}/>
             </div>
-            <Button className='form-submit' type='submit' title="Submit" onClick={onShow}/>
+            <Button className='form-submit' type='submit' title="Submit Item" onClick={onShow}/>
         </form>
     )
 
@@ -63,8 +63,8 @@ function WorkForm({ isActive, onShow, onAddBullet, onRemoveBullet, onBulletTypin
         <form className={isActive ? 'work-form' : 'hidden'}>
             <Input className='work-input' label='Company' name='company' placeholder='Name' type='text' text={company} onTyping={onCompanyTyping} />
             <Input className='work-input' label='Position' name='position' placeholder='Title' type='text' text={position} onTyping={onPositionTyping} />
-            <Input className='work-input' label='Start Date' name='start-date' placeholder='Month Year' type='text'text={dateStart} onTyping={onDateStartTyping}  />
-            <Input className='work-input' label='End Date' name='end-date' placeholder='Month Year' type='text' text={dateEnd} onTyping={onDateEndTyping} />
+            <Input className='work-input' label='Start Date' name='start-date' placeholder='Date' type='text'text={dateStart} onTyping={onDateStartTyping}  />
+            <Input className='work-input' label='End Date' name='end-date' placeholder='Date' type='text' text={dateEnd} onTyping={onDateEndTyping} />
             <div>
                 Additional Details:
                 {
@@ -80,7 +80,7 @@ function WorkForm({ isActive, onShow, onAddBullet, onRemoveBullet, onBulletTypin
                 }
                 <Button className='add-detail-btn' type='button' title="+ Add Detail" onClick={onAddBullet}/>
             </div>
-            <Button className='form-submit' type='submit' title="Submit" onClick={onShow}/>
+            <Button className='form-submit' type='submit' title="Submit Item" onClick={onShow}/>
         </form>
     )
 

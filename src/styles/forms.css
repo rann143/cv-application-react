@@ -39,7 +39,7 @@ label input {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.178);
     position: absolute;
     top: 0;
-    transform: translate(300%, 0%);
+    transform: translate(250%, 0%);
 }
 
 .work-container {
