@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div>
-       <h2 id='page-title'>RESUME BUILDER (Press Cmd+p for print preview)</h2>
+       <h2 id='page-title'>RESUME BUILDER (Press Cmd+p for print preview after submitting all sections)</h2>
       <ContactWrapper />
       <h2>EDUCATION</h2>
       <hr/>
