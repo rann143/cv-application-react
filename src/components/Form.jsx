@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import {Input, ParagraphInput} from './Input'
 import { ContactDisplay, EduDisplay, WorkDisplay } from './Display';
-import Button from './Button';
+import {Button} from './Button';
 import '../styles/forms.css';
 import { useState } from 'react';
 
@@ -32,20 +32,20 @@ function EduForm({isActive, onShow, onAddBullet, onRemoveBullet, onBulletTyping,
             <Input className='edu-input' label='School' name='school' placeholder='Tulane' type='text' text={school} onTyping={onSchoolTyping} />
             <Input className='edu-input' label='Degree' name='degree' placeholder='B.S Computer Science' type='text' text={degree} onTyping={onDegreeTyping} />
             <Input className='edu-input' label='Grad. Date' name='graduation-date' placeholder='Month Year' type='text' text={gradDate} onTyping={onGradDateTyping} />
-            <div>
+            <div className='bullet-div'>
             Additional Details:
                 {
                 bullets.map((bullet, index) => {
                     return (
-                        <>
+                        <div key={index} className='para-container'>
                         <ParagraphInput key={index} placeholder="Add Bullet" text={bullet.value} onTyping={(e) => onBulletTyping(index, e)} />
-                        <Button type='button' title='Delete' onClick={() => onRemoveBullet(index)}/>
-                        </>
+                        <Button className='dlt-btn' type='button' title='X' onClick={() => onRemoveBullet(index)}/>
+                        </div>
                     )
                 })
                 
                 }
-                <Button type='button' title="Add Detail" onClick={onAddBullet}/>
+                <Button className='add-detail-btn' type='button' title="+ Add Detail" onClick={onAddBullet}/>
             </div>
             <Button className='form-submit' type='submit' title="Submit" onClick={onShow}/>
         </form>
@@ -70,15 +70,15 @@ function WorkForm({ isActive, onShow, onAddBullet, onRemoveBullet, onBulletTypin
                 {
                 bullets.map((bullet, index) => {
                     return (
-                        <>
+                        <div key={index} className='para-container'>
                         <ParagraphInput key={index} placeholder="Add Bullet" text={bullet.value} onTyping={(e) => onBulletTyping(index, e)} />
-                        <Button type='button' title='Delete' onClick={() => onRemoveBullet(index)}/>
-                        </>
+                        <Button className='dlt-btn' type='button' title='X' onClick={() => onRemoveBullet(index)}/>
+                        </div>
                     )
                 })
                 
                 }
-                <Button type='button' title="Add Detail" onClick={onAddBullet}/>
+                <Button className='add-detail-btn' type='button' title="+ Add Detail" onClick={onAddBullet}/>
             </div>
             <Button className='form-submit' type='submit' title="Submit" onClick={onShow}/>
         </form>

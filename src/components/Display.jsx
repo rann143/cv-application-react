@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { ContactForm, EduForm, WorkForm } from "./Form";
-import Button from "./Button";
+import {Button} from "./Button";
 import { useState } from "react";
 import '../styles/display.css'
 import { v4 as uuidv4 } from 'uuid';

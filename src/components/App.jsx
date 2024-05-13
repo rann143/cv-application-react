@@ -4,8 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import '../styles/App.css'
+import '../styles/forms.css'
 import {Education, WorkExperience, ContactWrapper, EducationWrapper, WorkExperienceWrapper } from './Wrapper'
-import Button from './Button'
+import {Button} from './Button'
 
 function App() {
   const [educs, setEducs] = useState([{ wrapper: <EducationWrapper /> }])
@@ -18,6 +19,8 @@ function App() {
     { company: "Company 2", position: "Sales Development Representative", startDate: "Jan 2020", endDate: "Aug 2020", id: uuidv4() },
     { company: "Company 3", position: "Product Management Intern", startDate: "June 2021", endDate: "Aug 2023", id: uuidv4() }
   ])
+
+
                                             
 
   const arrEducationWrappers = educList.map(educ => (
@@ -70,13 +73,13 @@ function App() {
       <hr/>
 
       {arrEducationWrappers}
-      <Button type='button' title='Add Education' onClick={handleAddEducation} />
+      <Button className='add-section-btn' type='button' title='Add Education' onClick={handleAddEducation} />
 
       <h2>EXPERIENCE</h2>
       <hr/>
 
       {arrWorkWrappers}
-      <Button type='button' title='Add Work Experience' onClick={handleAddWorkExperience} />
+      <Button className='add-section-btn' type='button' title='Add Work Experience' onClick={handleAddWorkExperience} />
       
     </div>
   )

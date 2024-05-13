@@ -3,7 +3,7 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.178);
     position: absolute;
     top: 0;
-    right: 0;
+    left: -100px;
 }
 
 .edu-display {
@@ -13,6 +13,7 @@
     align-items: start;
     justify-content: start;
     padding: 0;
+    margin: .25rem
 }
 
 .work-display {
@@ -22,6 +23,7 @@
     align-items: start;
     justify-content: start;
     padding: 0;
+    margin: .25rem
 }
 
 .contact-display {

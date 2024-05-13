@@ -7,6 +7,10 @@ form {
     margin: 3rem;
 }
 
+.edu-form {
+    margin-bottom: 1.5rem;
+}
+
 .work-form {
     position: relative;
     display: flex;
@@ -60,4 +64,54 @@ textarea {
 
 .hidden {
     display: none;
+}
+
+.bullet-div {
+
+}
+
+.add-section-btn {
+    display: block;
+    justify-self: center;
+    margin-top: .75rem;
+    background-color: antiquewhite;
+}
+
+.add-detail-btn {
+    margin: 3px;
+    padding: .3rem .5rem;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.dlt-btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: .75rem;
+    padding: 0;
+    background-color: rgba(255, 0, 0, 0.24);
+}
+
+.para-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-section-btn {
+    background-color: rgba(255, 0, 0, 0.437);
+}
+
+@media print {
+    button {
+        display: none;
+        visibility: hidden;
+    }
+
+    .add-section-btn {
+        display: none;
+        visibility: hidden;
+    }
 }

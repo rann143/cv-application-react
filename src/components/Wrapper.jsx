@@ -5,27 +5,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { ContactForm, EduForm, WorkForm } from "./Form";
 import { ContactDisplay, EduDisplay, WorkDisplay } from './Display';
 import { Input, ParagraphInput } from "./Input";
-import Button from "./Button";
+import {Button, DeleteSectionButton} from "./Button";
+import { Education, WorkExperience } from "../classes"
+import '../styles/forms.css'
 
 //QUESTION: Can I create a single, overall Wrapper Component if could pass props into instead of 3 separate ones ???
-class Education {
-    constructor(uuid) {
-        this.school = '';
-        this.degree = '';
-        this.gradDate = '';
-        this.id = uuid;
-    }
-}
 
-class WorkExperience {
-    constructor(uuid) {
-        this.company = '';
-        this.position = '';
-        this.startDate = '';
-        this.endDate = '';
-        this.id = uuid
-    }
-}
 
 
 function ContactWrapper() {
@@ -84,8 +69,8 @@ function ContactWrapper() {
 
 // eslint-disable-next-line react/prop-types
 function EducationWrapper({education = new Education(uuidv4()), educList, setEducList}) {
-    const [activeIndex, setActiveIndex] = useState(1);
-    const [bullets, setBullets] = useState([{ value: 'GPA: 4.0; Distinguished Scholars Scholarship (Full)' }]);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [bullets, setBullets] = useState([{ value: '' }]);
  
 
     function handleBulletTyping(index, event) {
@@ -166,14 +151,14 @@ function EducationWrapper({education = new Education(uuidv4()), educList, setEdu
                 bullets={bullets}
             />
 
-            <Button type='button' title='remove' onClick={handleDelete}/>
-            {/* <Button type='button' title='Remove Education' onClick={() => onRemoveWrapper(index)}/> */}
+            <DeleteSectionButton isActive={activeIndex===0} className='remove-section-btn' type='button' title='Remove' onClick={handleDelete}/>
+            
         </>
     )
 }
 
 function WorkExperienceWrapper({work = new WorkExperience(uuidv4()), workList, setWorkList}) {
-    const [activeIndex, setActiveIndex] = useState(1);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [bullets, setBullets] = useState([{ value: 'Achieved 200% to required benchmarks' }, {value: 'Led team in over-achieving expectations and growing company revenue'}, {value: 'Mentored new hires, consistently training hires that became top-performers on their respective teams'}]);
 
     function handleBulletTyping(index, event) {
@@ -267,7 +252,7 @@ function WorkExperienceWrapper({work = new WorkExperience(uuidv4()), workList, s
             bullets={bullets}
         />
 
-        <Button type='button' title='remove' onClick={handleDelete}/>
+        <DeleteSectionButton isActive={activeIndex===0} className='remove-section-btn' type='button' title='Remove' onClick={handleDelete}/>
         </>
     )
 

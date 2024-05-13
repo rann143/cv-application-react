@@ -20,7 +20,7 @@ function Input({className, label, placeholder, type, name, text, onTyping}) {
 
 function ParagraphInput({ className, label, placeholder, text, onTyping }) {
     return (
-        <label>
+        <label className="paragraph-label">
             {label}
             <textarea
                 className={className}
