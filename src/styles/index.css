@@ -18,6 +18,9 @@
   color: rgb(43, 43, 43);
 }
 
+body {
+  padding: 3rem;
+}
 
 a {
   font-weight: 500;
